@@ -229,51 +229,37 @@
 	</div>
 
 </div>
-			
-		<script>
-			(function () {
-				var toolbar = document.querySelector('.day-toolbar');
-				if (!toolbar) return;
-				var buttons = Array.prototype.slice.call(toolbar.querySelectorAll('button[data-day]'));
-				if (!buttons.length) return;
-			
-				// Only hide days once we know scripting works.
-				document.body.classList.add('js-tabs');
-			
-				function show(id) {
-					buttons.forEach(function (button) {
-						var chosen = button.dataset.day === id;
-						button.setAttribute('aria-pressed', chosen ? 'true' : 'false');
-						var day = document.getElementById(button.dataset.day);
-						if (day) day.hidden = !chosen;
-					});
-					if (history.replaceState) history.replaceState(null, '', '#' + id);
-				}
-			
-				toolbar.addEventListener('click', function (event) {
-					var button = event.target.closest('button[data-day]');
-					if (button) show(button.dataset.day);
-				});
-			
-				// Arrow keys move between days.
-				toolbar.addEventListener('keydown', function (event) {
-					var step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
-					if (!step) return;
-					var index = buttons.indexOf(document.activeElement);
-					if (index < 0) return;
-					event.preventDefault();
-					var next = buttons[(index + step + buttons.length) % buttons.length];
-					next.focus();
-					show(next.dataset.day);
-				});
-			
-				// Deep links like #day-2 open on that day.
-				var wanted = buttons.some(function (b) { return '#' + b.dataset.day === location.hash; })
-					? location.hash.slice(1)
-					: buttons[0].dataset.day;
-				show(wanted);
-			}());
-			</script>
+<script>
+	(function () {
+		var toolbar = document.querySelector('.day-toolbar');
+		if (!toolbar) return;
+		var buttons = Array.prototype.slice.call(toolbar.querySelectorAll('button[data-day]'));
+		if (!buttons.length) return;
+	
+		document.body.classList.add('js-tabs');
+	
+		function show(id, fromClick) {
+			buttons.forEach(function (button) {
+				var chosen = button.dataset.day === id;
+				button.setAttribute('aria-pressed', chosen ? 'true' : 'false');
+				var day = document.getElementById(button.dataset.day);
+				if (day) day.hidden = !chosen;
+			});
+			// Only touch the URL when the reader actually picked a day.
+			if (fromClick && history.replaceState) history.replaceState(null, '', '#' + id);
+		}
+	
+		toolbar.addEventListener('click', function (event) {
+			var button = event.target.closest('button[data-day]');
+			if (button) show(button.dataset.day, true);
+		});
+	
+		var wanted = buttons.some(function (b) { return '#' + b.dataset.day === location.hash; })
+			? location.hash.slice(1)
+			: buttons[0].dataset.day;
+		show(wanted);
+	}());
+	</script>
 		</section>
 		
 		<section id="location">
