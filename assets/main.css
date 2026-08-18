@@ -1,0 +1,234 @@
+body {font-size: 100%;}
+
+h1 {font-size: 2.5em;line-height: 1.25;letter-spacing:-.02em;font-style: italic;margin-bottom:0em;font-weight: bold;}
+h2 {font-family:'Sorts Mill Goudy',serif;font-size: 2em;margin-top:0em;line-height: 1.15384615;text-align:center;}
+h3 {font-size: 1.375em;line-height: 1.13636364; margin-top:1em;text-transform:uppercase;letter-spacing:.05em;text-align:center;}
+h4, nav{font-size: 1.125em;text-align:center;}
+
+.highlight {
+font-size:1.2em;
+padding-bottom:0.1em;padding-top:0.1em;
+text-transform:uppercase;
+letter-spacing:.05em
+}
+
+ol{    margin-left:10%;
+    margin-right:10%;
+  line-height:1.2;}
+
+.interesting {
+font-size:1.2em;
+font-family:'Sorts Mill Goudy',sans-serif;
+background-color: #fff6d7;
+}
+
+.alert {
+padding: 0.5em;
+font-size:1.2em;
+font-family:'Sorts Mill Goudy',sans-serif;
+background-color: #fff6d7;
+}
+
+html{color:#222;font-size:1.15em;line-height:1;font-family:'Sorts Mill Goudy',serif; background-color: #fcfcff;}
+
+.flex{display:flex;align-items:center;justify-content:center;padding-bottom:1em;padding-top:2em; }
+
+#wrapper{width:70em;
+  padding-right:0;}
+
+nav{
+    border:thin solid #000;
+    padding-bottom:.125em;
+    width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	box-sizing: border-box;
+  }
+
+footer{
+  border-top:thin solid #000;
+  text-align:left;
+  font-size:.7em;
+  letter-spacing:0.05em;
+  padding-top:0.33em }
+
+a{
+  text-decoration: none;
+  color:#3300EE;
+  transition: color 0.7s;
+}
+a:hover{color:#7744ff }
+
+.prose a{
+  display: inline-block;
+  position: relative;
+}
+
+.prose a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 0.65em;
+  width: 100%;
+  border-bottom: thin dotted;
+  margin-top: 3px;
+}
+
+#dek{
+    font-size: 1.2em;
+    letter-spacing:.1em;
+    font-family:'Sorts Mill Goudy',sans-serif;
+    text-transform:uppercase;
+    margin-top:.33em;
+    width:100%;
+  }
+
+footer,nav{font-family:'Sorts Mill Goudy',sans-serif;text-transform:uppercase;letter-spacing:.05em }
+
+footer,nav{margin-top:0 }
+
+td{padding-bottom:0.2em;}
+
+header{
+  margin-top:-2em;
+  margin-bottom:-9em;
+  padding:0;
+  text-align:center;
+}
+
+main{padding-top:10.5em;width:100%;padding-bottom:1em;}
+
+.banner {
+    width: 100%;
+    border:thin solid #000;
+    padding:0;
+    margin:0;
+}
+
+.prose {
+    margin-top:1em;
+    margin-bottom:3em;
+    margin-left:10%;
+    margin-right:10%;
+    /* text-align: justify; */
+}
+
+/* navbar */
+
+.navbar {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    margin-top:0.3em;
+    margin-bottom:0.05em;
+}
+
+.navbar .menu-item {
+    padding: 2px 0px;
+    margin-left:0.5em;
+    margin-right:0.5em;
+    font-size: 1em;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    font-family: inherit;
+    vertical-align: bottom;
+    transition: color 0.7s;
+}
+
+.navbar:hover a{
+      background-color: #fff6d7;
+}
+
+@media screen and (max-width: 45em) {
+  .navbar{display: block;}
+}
+
+/* Programme! */
+
+/* -- Day toolbar ------------------------------------------- */
+
+.day-toolbar { display: none; margin: 0 0 1.5em 0; }
+.js-tabs .day-toolbar { display: flex; flex-wrap: wrap; gap: 0.5em; }
+
+.day-toolbar button {
+	font-family: 'Sorts Mill Goudy', serif;
+	font-size: 0.85em;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	padding: 0.4em 1em;
+	color: #222;
+	background-color: transparent;
+	border: thin solid #000;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+.day-toolbar button:hover { color: #3300EE; }
+.day-toolbar button[aria-pressed="true"] {
+	background-color: #fff6d7;
+	font-style: italic;
+}
+
+/* -- Day label --------------------------------------------- */
+
+.day + .day { margin-top: 2.5em; }
+.js-tabs .day + .day { margin-top: 0; }
+
+h4.day-label {
+	text-align: left;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0 0 0.6em 0;
+}
+
+/* -- The grid ---------------------------------------------- */
+
+.prose table.programme a::after { content: none; }
+
+table.programme {
+	border-collapse: collapse;
+	width: 100%;
+	line-height: 1.35;
+	border: thin solid #333;
+}
+
+table.programme td {
+	vertical-align: baseline;
+	padding: 0.55em 0.8em;
+	border-top: thin solid #333;
+}
+table.programme tr:first-child td { border-top: none; }
+
+table.programme td.time {
+	width: 8em;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+	border-right: thin solid #333;
+}
+
+table.programme .title {
+	display: block;
+	margin-top: 0.2em;
+	font-style: italic;
+}
+
+/* -- Breaks ------------------------------------------------ */
+
+table.programme tr.break td {
+	background-color: #fff6d7;
+	font-style: italic;
+}
+table.programme tr.notice td { font-style: normal; font-weight: bold; }
+
+/* -- Small screens ----------------------------------------- */
+
+@media screen and (max-width: 45em) {
+	table.programme td, table.programme td.time {
+		display: block;
+		width: auto;
+		border-right: none;
+	}
+	table.programme td.time { padding-bottom: 0; border-top: thin solid #333; }
+	table.programme td:nth-child(2) { border-top: none; padding-top: 0.15em; }
+	table.programme tr:first-child td.time { border-top: none; }
+}
